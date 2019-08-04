@@ -1,0 +1,9 @@
+/var/www/html/BionicERP/BionicERP.Commons/bin/Debug/netstandard2.0/BionicERP.Commons.deps.json
+/var/www/html/BionicERP/BionicERP.Commons/bin/Debug/netstandard2.0/BionicERP.Commons.dll
+/var/www/html/BionicERP/BionicERP.Commons/bin/Debug/netstandard2.0/BionicERP.Commons.pdb
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.csprojAssemblyReference.cache
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.csproj.CoreCompileInputs.cache
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.AssemblyInfoInputs.cache
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.AssemblyInfo.cs
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.dll
+/var/www/html/BionicERP/BionicERP.Commons/obj/Debug/netstandard2.0/BionicERP.Commons.pdb

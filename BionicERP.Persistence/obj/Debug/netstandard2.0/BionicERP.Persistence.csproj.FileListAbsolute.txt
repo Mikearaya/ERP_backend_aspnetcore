@@ -1,0 +1,16 @@
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Persistence.deps.json
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Persistence.dll
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Persistence.pdb
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Application.dll
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Commons.dll
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Domain.dll
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Domain.pdb
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Application.pdb
+/var/www/html/BionicERP/BionicERP.Persistence/bin/Debug/netstandard2.0/BionicERP.Commons.pdb
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.csprojAssemblyReference.cache
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.csproj.CoreCompileInputs.cache
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.AssemblyInfoInputs.cache
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.AssemblyInfo.cs
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.csproj.CopyComplete
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.dll
+/var/www/html/BionicERP/BionicERP.Persistence/obj/Debug/netstandard2.0/BionicERP.Persistence.pdb
