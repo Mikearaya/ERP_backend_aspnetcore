@@ -6,9 +6,10 @@ using BionicERP.Api.Configurations;
 using BionicERP.Api.Filters;
 using BionicERP.Application.Infrastructure;
 using BionicERP.Application.Interfaces;
+using BionicERP.Application.Procurment.Vendors.Commands;
 using BionicERP.Domain.Identity;
 using BionicERP.Persistence;
-using BionicInventory.Application.Vendors.Queries.Collections;
+using BionicInventory.Application.Procurment.Vendors.Queries;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
@@ -94,7 +95,7 @@ namespace BionicERP.Api {
                     };
                 };
             });
-            services.AddMediatR (typeof (GetVendorsListQuery).GetTypeInfo ().Assembly);
+            services.AddMediatR (typeof (CreateVendorCommand).GetTypeInfo ().Assembly);
 
             services.AddTransient (typeof (IPipelineBehavior<,>), typeof (RequestPreProcessorBehavior<,>));
             services.AddTransient (typeof (IPipelineBehavior<,>), typeof (RequestPerformanceBehaviour<,>));
@@ -108,9 +109,8 @@ namespace BionicERP.Api {
             services.AddMvc (
                     options => {
 
-                        /* options.ModelBinderProviders.Insert (0, new CustomModelBinderProvider ()); */
                         options.Filters.Add (typeof (CustomExceptionFilterAttribute));
-                        options.OutputFormatters.Clear (); // Disables recurrsive reference of entity framework get requests
+                        options.OutputFormatters.Clear ();
                         options.OutputFormatters.Add (new JsonOutputFormatter (new JsonSerializerSettings () {
                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                         }, ArrayPool<char>.Shared));

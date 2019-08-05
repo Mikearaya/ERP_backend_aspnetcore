@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:03 PM
+ * @Last Modified Time: Aug 5, 2019 2:06 PM
  * @Description: Modify Here, Please 
  */
 using System.Threading;
@@ -13,15 +13,15 @@ using BionicERP.Application.Interfaces;
 using BionicERP.Domain.Procurment;
 using MediatR;
 
-namespace BionicInventory.Application.Vendors.Commands.Delete {
-    public class DeleteVendorCommandHandler : IRequestHandler<DeletedVendorDto, Unit> {
+namespace BionicERP.Application.Procurment.Vendors.Commands {
+    public class DeleteVendorCommandHandler : IRequestHandler<DeleteVendorCommand, Unit> {
         private readonly IBionicERPDatabaseService _database;
 
         public DeleteVendorCommandHandler (IBionicERPDatabaseService database) {
             _database = database;
         }
 
-        public async Task<Unit> Handle (DeletedVendorDto request, CancellationToken cancellationToken) {
+        public async Task<Unit> Handle (DeleteVendorCommand request, CancellationToken cancellationToken) {
             var vendor = await _database.Vendor.FindAsync (request.Id);
 
             if (vendor == null) {

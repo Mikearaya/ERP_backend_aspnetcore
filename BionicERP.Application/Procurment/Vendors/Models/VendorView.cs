@@ -3,36 +3,36 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:04 PM
+ * @Last Modified Time: Aug 5, 2019 2:25 PM
  * @Description: Modify Here, Please 
  */
 using System;
 using System.Linq.Expressions;
 using BionicERP.Domain.Procurment;
 
-namespace BionicInventory.Application.Vendors.Models {
+namespace BionicInventory.Application.Procurment.Vendors.Models {
     public class VendorView {
 
-        public uint id { get; set; }
-        public string name { get; set; }
-        public string phoneNumber { get; set; }
-        public string tinNumber { get; set; }
-        public uint? leadTime { get; set; }
-        public uint? paymentPeriod { get; set; }
-        public DateTime? dateAdded { get; set; }
-        public DateTime? dateUpdated { get; set; }
+        public uint Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public string TinNumber { get; set; }
+        public uint? LeadTime { get; set; }
+        public uint? PaymentPeriod { get; set; }
+        public DateTime? DateAdded { get; set; }
+        public DateTime? DateUpdated { get; set; }
 
         public static Expression<Func<Vendor, VendorView>> Projection {
             get {
                 return vendor => new VendorView () {
-                    id = vendor.Id,
-                    name = vendor.Name,
-                    phoneNumber = vendor.PhoneNumber,
-                    tinNumber = vendor.TinNumber,
-                    leadTime = vendor.LeadTime,
-                    paymentPeriod = vendor.PaymentPeriod,
-                    dateAdded = vendor.DateAdded,
-                    dateUpdated = vendor.DateUpdated
+                    Id = vendor.Id,
+                    Name = vendor.Name,
+                    PhoneNumber = vendor.PhoneNumber,
+                    TinNumber = vendor.TinNumber,
+                    LeadTime = vendor.LeadTime,
+                    PaymentPeriod = vendor.PaymentPeriod,
+                    DateAdded = vendor.DateAdded,
+                    DateUpdated = vendor.DateUpdated
                 };
             }
         }

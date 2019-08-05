@@ -3,30 +3,55 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:04 PM
+ * @Last Modified Time: Aug 5, 2019 2:25 PM
  * @Description: Modify Here, Please 
  */
-using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BionicERP.Application.Interfaces;
-using BionicInventory.Application.Vendors.Models;
+using BionicERP.Commons.QueryHelpers;
+using BionicInventory.Application.Procurment.Vendors.Models;
+using BionicShipment.Application.Models;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace BionicInventory.Application.Vendors.Queries.Collections {
-    public class GetVendorsListViewQueryHandler : IRequestHandler<GetVendorsListQuery, IEnumerable<VendorView>> {
+namespace BionicInventory.Application.Procurment.Vendors.Queries {
+
+    public class GetVendorsListViewQueryHandler : IRequestHandler<GetVendorsListQuery, FilterResultModel<VendorView>> {
         private IBionicERPDatabaseService _database;
 
         public GetVendorsListViewQueryHandler (IBionicERPDatabaseService database) {
             _database = database;
         }
 
-        public async Task<IEnumerable<VendorView>> Handle (GetVendorsListQuery request, CancellationToken cancellationToken) {
-            return await _database.Vendor
+        public Task<FilterResultModel<VendorView>> Handle (GetVendorsListQuery request, CancellationToken cancellationToken) {
+            var sortBy = request.SortBy.Trim () != "" ? request.SortBy : "Name";
+            var sortDirection = (request.SortDirection.ToUpper () == "DESCENDING") ? true : false;
+
+            FilterResultModel<VendorView> result = new FilterResultModel<VendorView> ();
+            var banks = _database.Vendor
                 .Select (VendorView.Projection)
-                .ToListAsync ();
+                .Select (DynamicQueryHelper.GenerateSelectedColumns<VendorView> (request.SelectedColumns))
+                .AsQueryable ();
+
+            if (request.Filter.Count () > 0) {
+                banks = banks
+                    .Where (DynamicQueryHelper
+                        .BuildWhere<VendorView> (request.Filter)).AsQueryable ();
+            }
+
+            result.Count = banks.Count ();
+
+            var PageSize = (request.PageSize == 0) ? result.Count : request.PageSize;
+            var PageNumber = (request.PageSize == 0) ? 1 : request.PageNumber;
+
+            result.Items = banks.OrderBy (sortBy, sortDirection)
+                .Skip (PageNumber - 1)
+                .Take (PageSize)
+                .ToList ();
+
+            return Task.FromResult<FilterResultModel<VendorView>> (result);
         }
     }
 }

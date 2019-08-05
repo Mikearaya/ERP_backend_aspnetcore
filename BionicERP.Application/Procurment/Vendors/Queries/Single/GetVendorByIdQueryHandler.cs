@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:06 PM
+ * @Last Modified Time: Aug 5, 2019 2:26 PM
  * @Description: Modify Here, Please 
  */
 using System.Linq;
@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
 using BionicERP.Domain.Procurment;
-using BionicInventory.Application.Vendors.Models;
+using BionicInventory.Application.Procurment.Vendors.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace BionicInventory.Application.Vendors.Queries.Single {
+namespace BionicInventory.Application.Procurment.Vendors.Queries {
     public class GetVendorByIdQueryHandler : IRequestHandler<GetVendorByIdQuery, VendorView> {
         private readonly IBionicERPDatabaseService _database;
 
@@ -28,7 +28,7 @@ namespace BionicInventory.Application.Vendors.Queries.Single {
 
             var vendor = await _database.Vendor
                 .Select (VendorView.Projection)
-                .FirstOrDefaultAsync (v => v.id == request.Id);
+                .FirstOrDefaultAsync (v => v.Id == request.Id);
 
             if (vendor == null) {
                 throw new NotFoundException (nameof (Vendor), request.Id);

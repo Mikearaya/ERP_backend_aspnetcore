@@ -3,13 +3,13 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:06 PM
+ * @Last Modified Time: Aug 5, 2019 2:26 PM
  * @Description: Modify Here, Please 
  */
-using BionicInventory.Application.Vendors.Models;
+using BionicInventory.Application.Procurment.Vendors.Models;
 using MediatR;
 
-namespace BionicInventory.Application.Vendors.Queries.Single {
+namespace BionicInventory.Application.Procurment.Vendors.Queries {
     public class GetVendorByIdQuery : IRequest<VendorView> {
         public uint Id { get; set; }
     }

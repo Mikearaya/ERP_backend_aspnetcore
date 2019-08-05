@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:08 PM
+ * @Last Modified Time: Aug 5, 2019 2:40 PM
  * @Description: Modify Here, Please  
  */
 using System;
@@ -24,11 +24,11 @@ namespace BionicERP.Persistence {
         public BionicERPDatabaseService () { }
         public BionicERPDatabaseService (DbContextOptions<BionicERPDatabaseService> options) : base (options) { }
         public void Save () {
-            throw new NotImplementedException ();
+            this.SaveChanges ();
         }
 
         public Task SaveAsync () {
-            throw new NotImplementedException ();
+            return this.SaveChangesAsync ();
         }
 
         public DbSet<Address> Address { get; set; }

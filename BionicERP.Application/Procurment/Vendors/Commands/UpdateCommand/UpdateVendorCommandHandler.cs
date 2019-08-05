@@ -3,48 +3,37 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:03 PM
+ * @Last Modified Time: Aug 5, 2019 2:10 PM
  * @Description: Modify Here, Please 
  */
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
 using BionicERP.Domain.Procurment;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace BionicInventory.Application.Vendors.Commands.Update {
-    public class UpdateVendorCommandHandler : IRequestHandler<UpdatedVendorDto, Unit> {
+namespace BionicERP.Application.Procurment.Vendors.Commands {
+    public class UpdateVendorCommandHandler : IRequestHandler<UpdateVendorCommand, Unit> {
         private readonly IBionicERPDatabaseService _database;
-
+        private IMapper _Mapper;
         public UpdateVendorCommandHandler (IBionicERPDatabaseService database) {
             _database = database;
+            _Mapper = new MapperConfiguration (x => {
+                x.CreateMap<UpdateVendorCommand, Vendor> ();
+            }).CreateMapper ();
+
         }
 
-        public async Task<Unit> Handle (UpdatedVendorDto request, CancellationToken cancellationToken) {
-            var vendor = await _database.Vendor.FindAsync (request.Id);
+        public async Task<Unit> Handle (UpdateVendorCommand request, CancellationToken cancellationToken) {
+            Vendor vendor = await _database.Vendor.FindAsync (request.Id);
 
             if (vendor == null) {
                 throw new NotFoundException (nameof (Vendor), request.Id);
             }
-
-            if (vendor.TinNumber.ToUpper () != request.TinNumber.ToUpper () && request.TinNumber.Length > 0) {
-                var tin = await _database.Vendor
-                    .Where (v => v.TinNumber.ToUpper () == request.TinNumber.ToUpper ())
-                    .CountAsync ();
-
-                if (tin > 0) {
-                    throw new DuplicateTinNumberException (request.TinNumber);
-                }
-            }
-
-            vendor.Name = request.Name;
-            vendor.PhoneNumber = request.PhoneNumber;
-            vendor.PaymentPeriod = request.PaymentPeriod;
-            vendor.LeadTime = request.LeadTime;
-            vendor.TinNumber = request.TinNumber;
+            _Mapper.Map (request, vendor);
 
             _database.Vendor.Update (vendor);
             await _database.SaveAsync ();

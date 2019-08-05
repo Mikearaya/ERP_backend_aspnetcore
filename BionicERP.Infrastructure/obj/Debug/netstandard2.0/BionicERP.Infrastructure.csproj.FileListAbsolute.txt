@@ -1,9 +1,0 @@
-/var/www/html/BionicERP/BionicERP.Infrastructure/bin/Debug/netstandard2.0/BionicERP.Infrastructure.deps.json
-/var/www/html/BionicERP/BionicERP.Infrastructure/bin/Debug/netstandard2.0/BionicERP.Infrastructure.dll
-/var/www/html/BionicERP/BionicERP.Infrastructure/bin/Debug/netstandard2.0/BionicERP.Infrastructure.pdb
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.csprojAssemblyReference.cache
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.csproj.CoreCompileInputs.cache
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.AssemblyInfoInputs.cache
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.AssemblyInfo.cs
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.dll
-/var/www/html/BionicERP/BionicERP.Infrastructure/obj/Debug/netstandard2.0/BionicERP.Infrastructure.pdb

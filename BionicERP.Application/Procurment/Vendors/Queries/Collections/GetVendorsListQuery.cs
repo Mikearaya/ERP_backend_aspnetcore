@@ -3,15 +3,17 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 9:05 PM
+ * @Last Modified Time: Aug 5, 2019 2:25 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
-using BionicInventory.Application.Vendors.Models;
+using BionicERP.Commons.QueryHelpers;
+using BionicInventory.Application.Procurment.Vendors.Models;
+using BionicShipment.Application.Models;
 using MediatR;
 
-namespace BionicInventory.Application.Vendors.Queries.Collections {
-    public class GetVendorsListQuery : IRequest<IEnumerable<VendorView>> {
+namespace BionicInventory.Application.Procurment.Vendors.Queries {
+    public class GetVendorsListQuery : ApiQueryString, IRequest<FilterResultModel<VendorView>> {
 
     }
 }
