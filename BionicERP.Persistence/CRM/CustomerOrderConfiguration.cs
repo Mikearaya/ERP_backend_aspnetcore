@@ -32,13 +32,12 @@ namespace BionicERP.Persistence.CRM {
                 builder.Property (e => e.DateAdded)
                     .HasColumnName ("date_added")
                     .HasColumnType ("datetime")
-                    .HasDefaultValueSql ("CURRENT_TIMESTAMP");
+                    .HasDefaultValueSql ("'CURRENT_TIMESTAMP'");
 
                 builder.Property (e => e.DateUpdated)
                     .HasColumnName ("date_updated")
                     .HasColumnType ("datetime")
-                    .HasDefaultValueSql ("CURRENT_TIMESTAMP")
-                    .ValueGeneratedOnAddOrUpdate ();
+                    .HasDefaultValueSql ("'CURRENT_TIMESTAMP'");
 
                 builder.Property (e => e.Description)
                     .HasColumnName ("description")
@@ -47,7 +46,7 @@ namespace BionicERP.Persistence.CRM {
                 builder.Property (e => e.DueDate)
                     .HasColumnName ("due_date")
                     .HasColumnType ("datetime")
-                    .HasDefaultValueSql ("CURRENT_TIMESTAMP");
+                    .HasDefaultValueSql ("'CURRENT_TIMESTAMP'");
 
                 builder.Property (e => e.OrderStatus)
                     .HasColumnName ("order_status")

@@ -16,12 +16,11 @@ namespace BionicERP.Domain {
     public class Employee {
         public Employee () {
             BookedStockItems = new HashSet<BookedStockItems> ();
+            CustomerOrder = new HashSet<CustomerOrder> ();
             FinishedProductRecievedByNavigation = new HashSet<FinishedProduct> ();
             FinishedProductSubmittedByNavigation = new HashSet<FinishedProduct> ();
             Invoice = new HashSet<Invoice> ();
-            InvoicePayments = new HashSet<InvoicePayments> ();
             ProductionOrderList = new HashSet<ProductionOrderList> ();
-            CustomerOrder = new HashSet<CustomerOrder> ();
             Shipment = new HashSet<Shipment> ();
         }
 
@@ -32,12 +31,11 @@ namespace BionicERP.Domain {
         public DateTime? DateUpdated { get; set; }
 
         public ICollection<BookedStockItems> BookedStockItems { get; set; }
+        public ICollection<CustomerOrder> CustomerOrder { get; set; }
         public ICollection<FinishedProduct> FinishedProductRecievedByNavigation { get; set; }
         public ICollection<FinishedProduct> FinishedProductSubmittedByNavigation { get; set; }
         public ICollection<Invoice> Invoice { get; set; }
-        public ICollection<InvoicePayments> InvoicePayments { get; set; }
         public ICollection<ProductionOrderList> ProductionOrderList { get; set; }
-        public ICollection<CustomerOrder> CustomerOrder { get; set; }
         public ICollection<Shipment> Shipment { get; set; }
 
         public string FullName () {

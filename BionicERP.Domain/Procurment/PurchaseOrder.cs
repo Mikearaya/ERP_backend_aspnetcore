@@ -8,11 +8,13 @@
  */
 using System;
 using System.Collections.Generic;
+using BionicERP.Domain.CRM;
 using BionicERP.Domain.Inventory;
 
 namespace BionicERP.Domain.Procurment {
     public class PurchaseOrder {
         public PurchaseOrder () {
+            InvoicePayments = new HashSet<InvoicePayments> ();
             PurchaseOrderQuotation = new HashSet<PurchaseOrderQuotation> ();
             StockBatch = new HashSet<StockBatch> ();
         }
@@ -34,8 +36,8 @@ namespace BionicERP.Domain.Procurment {
         public DateTime? InvoiceDate { get; set; }
 
         public Vendor Vendor { get; set; }
+        public ICollection<InvoicePayments> InvoicePayments { get; set; }
         public ICollection<PurchaseOrderQuotation> PurchaseOrderQuotation { get; set; }
         public ICollection<StockBatch> StockBatch { get; set; }
-
     }
 }
