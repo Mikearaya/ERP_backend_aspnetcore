@@ -15,7 +15,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BionicERP.Api.Controllers.Procurments {
-    [Route ("api/procurments/purchase-orders/payments")]
+    [Route ("api/procurments/purchase-order-payments")]
     public class PurchaseOrderPaymentController : Controller {
         private readonly IMediator _Mediator;
 

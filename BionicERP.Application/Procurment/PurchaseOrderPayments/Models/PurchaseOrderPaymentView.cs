@@ -14,10 +14,10 @@ namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Models {
     public class PurchaseOrderPaymentView {
 
         public uint Id { get; set; }
-        public double Amount { get; set; }
+        public decimal? Amount { get; set; }
         public uint? PurchaseOrderId { get; set; }
         public string Vendor { get; set; }
-        public int? CheckNo { get; set; }
+        public string CheckNo { get; set; }
         public DateTime Date { get; set; }
         public string Note { get; set; }
         public DateTime? DateAdded { get; set; }
@@ -28,10 +28,11 @@ namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Models {
             get {
                 return payment => new PurchaseOrderPaymentView () {
                     Id = payment.Id,
-                    Amount = payment.Amount,
+                    Amount = (decimal?) payment.Amount,
                     PurchaseOrderId = payment.PurchaseOrderId,
                     Vendor = payment.PurchaseOrder.Vendor.Name,
                     CheckNo = payment.CheckNo,
+                    Date = payment.Date,
                     Note = payment.Note,
                     DateAdded = payment.DateAdded,
                     DateUpdated = payment.DateUpdated

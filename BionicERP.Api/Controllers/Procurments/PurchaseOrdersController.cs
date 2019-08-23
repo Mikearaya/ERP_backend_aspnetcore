@@ -3,9 +3,10 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 9, 2019 2:28 PM
+ * @Last Modified Time: Aug 17, 2019 11:21 AM
  * @Description: Modify Here, Please  
  */
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BionicERP.Application.Procurment.PurchaseOrders.Commands;
 using BionicERP.Application.Procurment.PurchaseOrders.Models;
@@ -34,6 +35,13 @@ namespace BionicERP.Api.Controllers.Procurments {
         [HttpGet ("{id}")]
         public async Task<ActionResult<PurchaseOrderDetailView>> FindPurchaseOrderById (uint id) {
             var purchaseOrder = await _Mediator.Send (new GetPurchaseOrderByIdQuery () { Id = id });
+
+            return StatusCode (200, purchaseOrder);
+        }
+
+        [HttpGet ("index")]
+        public async Task<ActionResult<IEnumerable<PurchaseOrderIndexModel>>> GetPurchaseOrderIndex ([FromQuery] GetPurchaseOrderIndexQuery query) {
+            var purchaseOrder = await _Mediator.Send (query);
 
             return StatusCode (200, purchaseOrder);
         }

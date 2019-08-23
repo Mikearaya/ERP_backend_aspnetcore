@@ -21,7 +21,7 @@ namespace BionicERP.Persistence.CRM {
 
                 builder.Property (e => e.CheckNo)
                     .HasColumnName ("check_no")
-                    .HasColumnType ("int(11)");
+                    .HasColumnType ("varchar(30)");
 
                 builder.Property (e => e.Date)
                     .HasColumnName ("date")

@@ -13,7 +13,7 @@ namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Commands {
     public class CreatePurchaseOrderPaymentCommand : IRequest<uint> {
         public double Amount { get; set; }
         public uint? PurchaseOrderId { get; set; }
-        public int? CheckNo { get; set; }
+        public string CheckNo { get; set; }
         public DateTime Date { get; set; }
         public string Note { get; set; }
     }
