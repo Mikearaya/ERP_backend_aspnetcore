@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 23, 2019 3:04 PM
+ * @Last Modified Time: Aug 24, 2019 11:12 AM
  * @Description: Modify Here, Please  
  */
 using System.Linq;
@@ -28,23 +28,23 @@ namespace BionicERP.Application.Inventory.UnitOfMeasurments.Queries {
             var sortDirection = (request.SortDirection.ToUpper () == "DESCENDING") ? false : true;
 
             FilterResultModel<UnitOfMeasurmentViewModel> result = new FilterResultModel<UnitOfMeasurmentViewModel> ();
-            var purchaseTerm = _database.UnitsOfMeasurment
+            var uom = _database.UnitsOfMeasurment
                 .Select (UnitOfMeasurmentViewModel.Projection)
                 .Select (DynamicQueryHelper.GenerateSelectedColumns<UnitOfMeasurmentViewModel> (request.SelectedColumns))
                 .AsQueryable ();
 
             if (request.Filter.Count () > 0) {
-                purchaseTerm = purchaseTerm
+                uom = uom
                     .Where (DynamicQueryHelper
                         .BuildWhere<UnitOfMeasurmentViewModel> (request.Filter)).AsQueryable ();
             }
 
-            result.Count = purchaseTerm.Count ();
+            result.Count = uom.Count ();
 
             var PageSize = (request.PageSize == 0) ? result.Count : request.PageSize;
             var PageNumber = (request.PageSize == 0) ? 1 : request.PageNumber;
 
-            result.Items = purchaseTerm.OrderBy (sortBy, sortDirection)
+            result.Items = uom.OrderBy (sortBy, sortDirection)
                 .Skip (PageNumber - 1)
                 .Take (PageSize)
                 .ToList ();
