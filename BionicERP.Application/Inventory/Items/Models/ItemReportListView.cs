@@ -10,13 +10,13 @@ namespace BionicERP.Application.Inventory.Items.Models {
         private float _quantity = 0;
         private float _totalCost = 0;
         private float _inStock = 0;
-        public uint id { get; set; }
+        public uint Id { get; set; }
 
-        public string item { get; set; }
+        public string Item { get; set; }
 
-        public string itemCode { get; set; }
+        public string ItemCode { get; set; }
 
-        public float inStock {
+        public float InStock {
             get {
                 return _inStock;
             }
@@ -24,16 +24,17 @@ namespace BionicERP.Application.Inventory.Items.Models {
                 _inStock = value;
             }
         }
-        public float available {
+        public float Available {
             get {
-                return inStock - booked;
+                return InStock - Booked;
             }
+            set { }
         }
 
-        public float booked { get; set; }
+        public float Booked { get; set; }
 
-        public float totalExpected { get; set; }
-        public float totalWriteOff {
+        public float TotalExpected { get; set; }
+        public float TotalWriteOff {
             get {
                 return _totalWriteOff;
             }
@@ -42,19 +43,20 @@ namespace BionicERP.Application.Inventory.Items.Models {
             }
         }
 
-        public float expectedAvailable {
+        public float ExpectedAvailable {
             get {
-                return totalExpected - expectedBooked;
+                return TotalExpected - ExpectedBooked;
             }
+            set { }
         }
 
-        public float expectedBooked { get; set; }
+        public float ExpectedBooked { get; set; }
 
-        public float? minimumQuantity { get; set; }
-        public string primaryUom { get; set; }
-        public uint primaryUomId { get; set; }
+        public float? MinimumQuantity { get; set; }
+        public string PrimaryUom { get; set; }
+        public uint PrimaryUomId { get; set; }
 
-        public float totalCost {
+        public float TotalCost {
             get {
                 return _totalCost;
             }
@@ -64,24 +66,25 @@ namespace BionicERP.Application.Inventory.Items.Models {
         }
         public float averageCost {
             get {
-                return (inStock != 0 || totalExpected != 0) ? _totalCost / (inStock + totalExpected) : 0;
+                return (InStock != 0 || TotalExpected != 0) ? _totalCost / (InStock + TotalExpected) : 0;
             }
+            set { }
         }
 
         public static Expression<Func<IGrouping<Item, ItemLotJoin>, ItemReportListView>> Projection {
             get {
                 return report => new ItemReportListView () {
-                    id = report.Key.Id,
-                    item = report.Key.Name,
-                    itemCode = report.Key.Code,
-                    minimumQuantity = report.Key.MinimumQuantity,
+                    Id = report.Key.Id,
+                    Item = report.Key.Name,
+                    ItemCode = report.Key.Code,
+                    MinimumQuantity = report.Key.MinimumQuantity,
                     //     primaryUom = report.Key.PrimaryUom.Abrivation,
                     //     primaryUomId = report.Key.PrimaryUomId,
-                    booked = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "RECIEVED").Sum (i => i.BookedStockBatch.Sum (a => a.Quantity))),
-                    inStock = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "RECIEVED").Sum (i => i.Quantity)),
-                    expectedBooked = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "PLANED").Sum (i => i.BookedStockBatch.Sum (a => a.Quantity))),
-                    totalExpected = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "PLANED").Sum (i => i.Quantity)),
-                    totalCost = report.Sum (b => b.Lot.Sum (i => i.Quantity * i.Batch.UnitCost)),
+                    Booked = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "RECIEVED").Sum (i => i.BookedStockBatch.Sum (a => a.Quantity))),
+                    InStock = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "RECIEVED").Sum (i => i.Quantity)),
+                    ExpectedBooked = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "PLANED").Sum (i => i.BookedStockBatch.Sum (a => a.Quantity))),
+                    TotalExpected = report.Sum (b => b.Lot.Where (s => s.Batch.Status.ToUpper () == "PLANED").Sum (i => i.Quantity)),
+                    TotalCost = report.Sum (b => b.Lot.Sum (i => i.Quantity * i.Batch.UnitCost)),
                 };
             }
         }

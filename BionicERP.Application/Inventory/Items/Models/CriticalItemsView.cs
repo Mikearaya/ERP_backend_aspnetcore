@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 9:05 PM
+ * @Last Modified Time: Aug 24, 2019 12:33 PM
  * @Description: Modify Here, Please 
  */
 
@@ -27,6 +27,7 @@ namespace BionicERP.Application.Inventory.Items.Models {
                     return 0;
                 }
             }
+            set { }
         }
         public float MinimumQuantity { get; set; }
 

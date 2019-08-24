@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 23, 2019 2:36 PM
+ * @Last Modified Time: Aug 24, 2019 12:21 PM
  * @Description: Modify Here, Please  
  */
 using System.Linq;
@@ -28,23 +28,23 @@ namespace BionicERP.Application.Inventory.ProductGroups.Queries {
             var sortDirection = (request.SortDirection.ToUpper () == "DESCENDING") ? false : true;
 
             FilterResultModel<ProductGroupViewModel> result = new FilterResultModel<ProductGroupViewModel> ();
-            var purchaseTerm = _database.ProductGroup
+            var productGroup = _database.ProductGroup
                 .Select (ProductGroupViewModel.Projection)
                 .Select (DynamicQueryHelper.GenerateSelectedColumns<ProductGroupViewModel> (request.SelectedColumns))
                 .AsQueryable ();
 
             if (request.Filter.Count () > 0) {
-                purchaseTerm = purchaseTerm
+                productGroup = productGroup
                     .Where (DynamicQueryHelper
                         .BuildWhere<ProductGroupViewModel> (request.Filter)).AsQueryable ();
             }
 
-            result.Count = purchaseTerm.Count ();
+            result.Count = productGroup.Count ();
 
             var PageSize = (request.PageSize == 0) ? result.Count : request.PageSize;
             var PageNumber = (request.PageSize == 0) ? 1 : request.PageNumber;
 
-            result.Items = purchaseTerm.OrderBy (sortBy, sortDirection)
+            result.Items = productGroup.OrderBy (sortBy, sortDirection)
                 .Skip (PageNumber - 1)
                 .Take (PageSize)
                 .ToList ();

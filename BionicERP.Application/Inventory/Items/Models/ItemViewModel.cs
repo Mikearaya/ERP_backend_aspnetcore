@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 9:02 PM
+ * @Last Modified Time: Aug 24, 2019 12:13 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using BionicERP.Domain.Inventory;
 
 namespace BionicInventory.Application.Stocks.Items.Models {
-    public class ItemView {
+    public class ItemViewModel {
         public uint Id;
         public string Code;
         public string Name;
@@ -36,10 +36,10 @@ namespace BionicInventory.Application.Stocks.Items.Models {
         public DateTime? DateUpdated { get; set; }
         public DateTime? DateAdded { get; set; }
 
-        public static Expression<Func<Item, ItemView>> Projection {
+        public static Expression<Func<Item, ItemViewModel>> Projection {
 
             get {
-                return item => new ItemView () {
+                return item => new ItemViewModel () {
                     Id = item.Id,
                     Code = item.Code,
                     Name = item.Name,
