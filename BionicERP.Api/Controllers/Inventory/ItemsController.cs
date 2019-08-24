@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 9:17 PM
+ * @Last Modified Time: Aug 24, 2019 10:40 AM
  * @Description: Modify Here, Please 
  */
 
@@ -14,7 +14,7 @@ using BionicERP.Application.Inventory.Items.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BionicERP.Api.Controllers.Inventory.Items {
+namespace BionicERP.Api.Controllers.Inventory {
     [Route ("api/inventory/items")]
 
     public class ItemsController : Controller {

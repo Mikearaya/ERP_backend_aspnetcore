@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 23, 2019 2:37 PM
+ * @Last Modified Time: Aug 24, 2019 10:41 AM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -16,6 +16,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BionicERP.Api.Controllers.Inventory {
+    [Route ("api/inventory/product-groups")]
     public class ProductGroupsController : Controller {
         private readonly IMediator _Mediator;
 
@@ -41,7 +42,7 @@ namespace BionicERP.Api.Controllers.Inventory {
 
         // api/procurments/ProductGroups/index
         [HttpGet ("index")]
-        public async Task<ActionResult<ProductGroupViewModel>> GetProductGroupsIndex ([FromQuery] GetProductGroupIndexQuery query) {
+        public async Task<ActionResult<ProductGroupIndexModel>> GetProductGroupsIndex ([FromQuery] GetProductGroupIndexQuery query) {
 
             var ProductGroup = await _Mediator.Send (query);
             return StatusCode (200, ProductGroup);
