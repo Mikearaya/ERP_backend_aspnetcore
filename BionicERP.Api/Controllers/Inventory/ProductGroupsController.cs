@@ -16,7 +16,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BionicERP.Api.Controllers.Inventory {
-    [Route ("api/inventory/product-groups")]
+    [Route ("api/inventory/item-groups")]
     public class ProductGroupsController : Controller {
         private readonly IMediator _Mediator;
 

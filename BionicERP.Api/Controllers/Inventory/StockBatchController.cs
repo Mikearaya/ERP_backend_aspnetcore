@@ -2,8 +2,8 @@
  * @CreateTime: Aug 24, 2019 5:20 PM 
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
- * @Last Modified By:  Mikael Araya 
- * @Last Modified Time: Aug 24, 2019 5:20 PM 
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 2, 2019 4:44 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -21,6 +21,12 @@ namespace BionicERP.Api.Controllers.Inventory {
 
         public StockBatchController (IMediator mediator) {
             _Mediator = mediator;
+        }
+
+        [HttpGet ("{id}")]
+        public async Task<ActionResult<StockBatchDetailView>> FindStockBatchById (uint id) {
+            var batch = await _Mediator.Send (new GetStockBatchByIdQuery () { Id = id });
+            return StatusCode (200, batch);
         }
 
         // api/inventory/stock-lots
