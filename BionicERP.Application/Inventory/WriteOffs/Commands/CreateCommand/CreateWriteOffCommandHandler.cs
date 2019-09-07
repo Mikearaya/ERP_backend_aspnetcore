@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 7, 2019 1:08 PM
+ * @Last Modified Time: Sep 7, 2019 2:18 PM
  * @Description: Modify Here, Please  
  */
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
+using BionicERP.Application.Inventory.WriteOffs.Models;
 using BionicERP.Domain.Inventory;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace BionicERP.Application.Inventory.WriteOffs.Commands {
             _database = database;
             _Mapper = new MapperConfiguration (x => {
                 x.CreateMap<CreateWriteOffCommand, WriteOff> ();
+                x.CreateMap<WriteOffItem, WriteOffDetail> ();
             }).CreateMapper ();
         }
 

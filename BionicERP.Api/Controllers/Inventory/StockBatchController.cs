@@ -3,9 +3,10 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 2, 2019 4:44 PM
+ * @Last Modified Time: Sep 7, 2019 2:03 PM
  * @Description: Modify Here, Please  
  */
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BionicERP.Application.Inventory.StockBatchs.Commands;
 using BionicERP.Application.Inventory.StockBatchs.Models;
@@ -27,6 +28,16 @@ namespace BionicERP.Api.Controllers.Inventory {
         public async Task<ActionResult<StockBatchDetailView>> FindStockBatchById (uint id) {
             var batch = await _Mediator.Send (new GetStockBatchByIdQuery () { Id = id });
             return StatusCode (200, batch);
+        }
+
+        // api/inventory/stock-lots/items/2
+        [HttpGet ("items/{itemId}")]
+        public async Task<ActionResult<IEnumerable<StockBatchView>>> GetItemStockBatchs (uint itemId) {
+
+            var batch = await _Mediator.Send (new GetStockBatchItemListQuery () { ItemId = itemId });
+
+            return StatusCode (200, batch);
+
         }
 
         // api/inventory/stock-lots
