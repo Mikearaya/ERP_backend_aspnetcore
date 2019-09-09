@@ -27,7 +27,7 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
         public string Reference { get; set; }
         public string Description { get; set; }
         public double Discount { get; set; }
-        public IEnumerable<CustomerOrderItemView> CustomerOrderItems = new List<CustomerOrderItemView> ();
+        public IEnumerable<CustomerOrderItemView> CustomerOrderItem = new List<CustomerOrderItemView> ();
 
         public static Expression<Func<CustomerOrder, CustomerOrderDetailViewModel>> Projection {
             get {
@@ -40,7 +40,7 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
                     DateAdded = order.DateAdded,
                     DateUpdated = order.DateUpdated,
                     Description = order.Description,
-                    CustomerOrderItems = order.CustomerOrderItem.AsQueryable ().Select (CustomerOrderItemView.Projection)
+                    CustomerOrderItem = order.CustomerOrderItem.AsQueryable ().Select (CustomerOrderItemView.Projection)
 
                 };
             }
