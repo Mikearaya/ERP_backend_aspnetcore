@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 2:40 PM
+ * @Last Modified Time: Sep 10, 2019 11:53 AMAM
  * @Description: Modify Here, Please  
  */
 using System;
@@ -70,6 +70,8 @@ namespace BionicERP.Persistence {
         public DbSet<PurchaseOrder> PurchaseOrder { get; set; }
         public DbSet<PurchaseOrderQuotation> PurchaseOrderQuotation { get; set; }
         public DbSet<SystemSettings> SystemSettings { get; set; }
+
+        public DbSet<SystemLookup> SystemLookups { get; set; }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionBuilder) {
             if (!optionBuilder.IsConfigured) {

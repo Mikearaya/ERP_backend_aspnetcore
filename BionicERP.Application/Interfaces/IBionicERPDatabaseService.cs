@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 4, 2019 8:52 PM
+ * @Last Modified Time: Sep 10, 2019 12:05 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -65,6 +65,7 @@ namespace BionicERP.Application.Interfaces {
         DbSet<UserRoles> UserRoles { get; set; }
         DbSet<ApplicationUser> Users { get; set; }
         DbSet<UserTokens> UserTokens { get; set; }
+        DbSet<SystemLookup> SystemLookups { get; set; }
 
         void Save ();
         Task SaveAsync ();
