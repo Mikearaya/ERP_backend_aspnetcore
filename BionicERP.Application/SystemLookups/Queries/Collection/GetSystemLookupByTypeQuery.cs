@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 10, 2019 12:43 PM
+ * @Last Modified Time: Sep 10, 2019 1:46 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -16,13 +16,6 @@ namespace BionicERP.Application.SystemLookups.Queries {
         private string Term { get; set; } = "";
 
         public string Type { get; set; }
-        public string SearchString {
-            get {
-                return Term;
-            }
-            set {
-                Term = (value == null) ? "" : value;
-            }
-        }
+
     }
 }
