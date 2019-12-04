@@ -13,7 +13,7 @@ using BionicERP.Domain.Procurment;
 
 namespace BionicERP.Application.Procurment.PurchaseOrders.Models {
     public class PurchaseOrderView {
-        private decimal _totalCost = 0;
+        private decimal? _totalCost = 0;
         private float? _tax = 0;
         private float? _discount = 0;
         public uint Id { get; set; }
@@ -31,7 +31,7 @@ namespace BionicERP.Application.Procurment.PurchaseOrders.Models {
                 _tax = value == null ? 0 : value;
             }
         }
-        public decimal TotalCost {
+        public decimal? TotalCost {
             get {
                 return (_totalCost - (_totalCost * (decimal) (Tax / 100 + Discount / 100))) + (decimal) AdditionalFee;
             }
@@ -68,8 +68,8 @@ namespace BionicERP.Application.Procurment.PurchaseOrders.Models {
                     ShippedDate = po.ShippedDate,
                     Tax = po.Tax,
                     TotalCost = (po.StockBatch.Count != 0) ?
-                    (decimal) po.StockBatch.Sum (item => item.UnitCost * item.Quantity) :
-                    (decimal) po.PurchaseOrderQuotation.Sum (item => item.UnitPrice * item.Quantity),
+                    (decimal?) po.StockBatch.Sum (item => item.UnitCost * item.Quantity) :
+                    (decimal?) po.PurchaseOrderQuotation.Sum (item => item.UnitPrice * item.Quantity),
                     DateAdded = po.DateAdded,
                     DateUpdated = po.DateUpdated,
                     Discount = po.Discount,

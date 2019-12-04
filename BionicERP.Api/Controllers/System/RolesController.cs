@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BionicERP.Api.Controllers.System {
 
-    [Route ("api/roles")]
+    [Route ("api/system-roles")]
     public class RolesController : Controller {
         private readonly IMediator _Mediator;
 
