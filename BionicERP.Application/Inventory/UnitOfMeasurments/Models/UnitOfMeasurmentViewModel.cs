@@ -14,7 +14,7 @@ namespace BionicERP.Application.Inventory.UnitOfMeasurments.Models {
     public class UnitOfMeasurmentViewModel {
         public uint Id { get; set; }
         public string Name { get; set; }
-        public string Abbrevation { get; set; }
+        public string Abrevation { get; set; }
 
         public Boolean Active { get; set; }
 
@@ -26,7 +26,7 @@ namespace BionicERP.Application.Inventory.UnitOfMeasurments.Models {
                 return uom => new UnitOfMeasurmentViewModel {
                     Id = uom.Id,
                     Name = uom.Name,
-                    Abbrevation = uom.Abrivation,
+                    Abrevation = uom.Abrivation,
                     Active = (uom.Active == 1) ? true : false,
                     DateAdded = uom.DateAdded,
                     DateUpdated = uom.DateUpdated
