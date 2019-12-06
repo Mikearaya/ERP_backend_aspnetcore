@@ -16,23 +16,23 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
 
         public uint Id { get; set; }
         public uint ItemId { get; set; }
-        public double Quantity { get; set; }
-        public float UnitPrice { get; set; }
-        public double SubTotal {
+        public decimal Quantity { get; set; }
+        public decimal? PricePerItem { get; set; }
+        public decimal? SubTotal {
             get {
-                return Quantity * UnitPrice;
+                return (decimal?) Quantity * PricePerItem;
             }
         }
-        public double TotalCost { get; set; }
-        public double Profit {
+        public decimal? TotalCost { get; set; }
+        public decimal? Profit {
             get {
-                return SubTotal - TotalCost;
+                return (decimal?) SubTotal - TotalCost;
             }
         }
-        public string Status { get; set; }
+
         public uint ManufactureOrderId { get; set; }
-        public DateTime? DeliveryDate { get; set; }
-        public float? TotalShipped { get; set; }
+        public DateTime? DueDate { get; set; }
+        public decimal? TotalShipped { get; set; }
 
         public static Expression<Func<CustomerOrderItem, CustomerOrderItemView>> Projection {
             get {
@@ -40,9 +40,11 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
                     Id = order.Id,
                     ItemId = order.ItemId,
                     Quantity = order.Quantity,
-                    UnitPrice = order.PricePerItem,
-                    TotalCost = order.BookedStockBatch.Sum (o => o.BatchStorage.Batch.UnitCost * order.Quantity),
-                    TotalShipped = order.BookedStockBatch.Sum (o => o.ShipmentDetail.Sum (q => q.PickedQuantity))
+                    DueDate = order.DueDate,
+
+                    PricePerItem = (decimal?) order.PricePerItem,
+                    TotalCost = (decimal?) order.BookedStockBatch.Sum (o => o.BatchStorage.Batch.UnitCost * order.Quantity),
+                    TotalShipped = (decimal?) order.BookedStockBatch.Sum (o => o.ShipmentDetail.Sum (q => q.PickedQuantity))
 
                 };
             }

@@ -16,27 +16,27 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
     public class CustomerOrderDetailViewModel {
 
         public uint Id { get; set; }
-        public uint CustomerId { get; set; }
+        public uint ClientId { get; set; }
         public string CustomerName { get; set; }
-        public string Status { get; set; }
-        public DateTime? DeliveryDate { get; set; }
+        public string OrderStatus { get; set; }
+        public DateTime? DueDate { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
 
         public string CreatedBy { get; set; }
         public string Reference { get; set; }
         public string Description { get; set; }
-        public double Discount { get; set; }
+        public decimal Discount { get; set; }
         public IEnumerable<CustomerOrderItemView> CustomerOrderItem = new List<CustomerOrderItemView> ();
 
         public static Expression<Func<CustomerOrder, CustomerOrderDetailViewModel>> Projection {
             get {
                 return order => new CustomerOrderDetailViewModel () {
                     Id = order.Id,
-                    CustomerId = order.ClientId,
+                    ClientId = order.ClientId,
                     CustomerName = order.Client.FullName,
-                    Status = order.OrderStatus,
-                    DeliveryDate = order.DueDate,
+                    OrderStatus = order.OrderStatus,
+                    DueDate = order.DueDate,
                     DateAdded = order.DateAdded,
                     DateUpdated = order.DateUpdated,
                     Description = order.Description,

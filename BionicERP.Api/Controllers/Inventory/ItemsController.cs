@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 24, 2019 12:31 PM
+ * @Last Modified Time: Dec 6, 2019 5:59 PM
  * @Description: Modify Here, Please 
  */
 
@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using BionicERP.Application.Inventory.Items.Commands;
 using BionicERP.Application.Inventory.Items.Models;
 using BionicERP.Application.Inventory.Items.Queries;
+using BionicERP.Application.Inventory.StockBatchs.Models;
+using BionicERP.Application.Inventory.StockBatchs.Queries;
 using BionicInventory.Application.Stocks.Items.Models;
 using BionicShipment.Application.Models;
 using MediatR;
@@ -89,6 +91,12 @@ namespace BionicERP.Api.Controllers.Inventory {
 
             return StatusCode (204);
 
+        }
+
+        [HttpPost ("count")]
+        public async Task<ActionResult<IEnumerable<InventoryView>>> GetInventoryCount ([FromBody] GetInventoryViewQuery query) {
+            var result = await _Mediator.Send (query);
+            return StatusCode (200, result);
         }
 
     }
