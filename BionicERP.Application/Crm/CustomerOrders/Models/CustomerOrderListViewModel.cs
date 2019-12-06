@@ -14,15 +14,15 @@ using BionicERP.Domain.CRM;
 namespace BionicERP.Application.Crm.CustomerOrders.Models {
     public class CustomerOrderListViewModel {
         public uint Id { get; set; }
-        public double TotalQuantity { get; set; }
+        public decimal? TotalQuantity { get; set; }
         public uint CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public double? TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
 
-        public double? TotalCost { get; set; }
-        public double? Profit {
+        public decimal? TotalCost { get; set; }
+        public decimal? Profit {
             get {
-                return TotalPrice - TotalCost;
+                return (decimal?) TotalPrice - TotalCost;
             }
             set { }
         }
@@ -45,10 +45,10 @@ namespace BionicERP.Application.Crm.CustomerOrders.Models {
                     CustomerId = order.ClientId,
                     CustomerName = order.Client.FullName,
                     Status = order.OrderStatus,
-                    TotalCost = order.CustomerOrderItem.AsQueryable ()
+                    TotalCost = (decimal?) order.CustomerOrderItem.AsQueryable ()
                     .Sum (o => o.BookedStockBatch
                     .Sum (s => s.BatchStorage.Batch.UnitCost * o.Quantity)),
-                    TotalPrice = order.CustomerOrderItem.Sum (o => o.PricePerItem * o.Quantity),
+                    TotalPrice = (decimal?) order.CustomerOrderItem.Sum (o => o.PricePerItem * o.Quantity),
                     TotalQuantity = order.CustomerOrderItem.Sum (o => o.Quantity),
                     DeliveryDate = order.DueDate,
                     DateAdded = order.DateAdded,

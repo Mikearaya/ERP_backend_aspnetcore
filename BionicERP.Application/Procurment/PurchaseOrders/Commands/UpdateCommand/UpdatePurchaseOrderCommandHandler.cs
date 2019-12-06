@@ -9,12 +9,9 @@ using System;
  */
 using System.Threading;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
 using AutoMapper;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
-using BionicERP.Application.Inventory.StockBatchs.Commands;
-using BionicERP.Application.Inventory.StockBatchs.Models;
 using BionicERP.Domain.Procurment;
 using MediatR;
 namespace BionicERP.Application.Procurment.PurchaseOrders.Commands {
