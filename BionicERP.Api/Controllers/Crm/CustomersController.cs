@@ -4,7 +4,7 @@ using System.Collections.Generic;
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 7, 2019 5:54 PM
+ * @Last Modified Time: Dec 9, 2019 6:41 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -72,6 +72,12 @@ namespace BionicERP.Api.Controllers.Crm {
 
             return StatusCode (204);
 
+        }
+
+        [HttpDelete ("{customerId}/address/{id}")]
+        public async Task<ActionResult> DeleteCustomerAddress (uint customerId, uint id) {
+            await _Mediator.Send (new DeleteCustomerAddressCommand () { Id = id, CustomerId = customerId });
+            return StatusCode (204);
         }
     }
 }
