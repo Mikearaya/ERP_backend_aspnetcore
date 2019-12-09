@@ -4,7 +4,7 @@ using System.Collections.Generic;
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 9, 2019 6:58 PM
+ * @Last Modified Time: Dec 9, 2019 7:07 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -83,6 +83,12 @@ namespace BionicERP.Api.Controllers.Crm {
         [HttpDelete ("{customerId}/social-media/{id}")]
         public async Task<ActionResult> DeleteCustomerSocialAddress (uint customerId, uint id) {
             await _Mediator.Send (new DeleteCustomerSocialMediaCommand () { CustomerId = customerId, Id = id });
+            return StatusCode (204);
+        }
+
+        [HttpDelete ("{customerId}/phone-number/{id}")]
+        public async Task<ActionResult> DeleteCustomerPhoneNumber (uint customerId, uint id) {
+            await _Mediator.Send (new DeleteCustomerPhoneCommand () { CustomerId = customerId, Id = id });
             return StatusCode (204);
         }
     }
