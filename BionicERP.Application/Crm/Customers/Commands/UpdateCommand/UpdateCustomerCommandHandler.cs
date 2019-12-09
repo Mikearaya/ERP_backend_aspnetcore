@@ -8,6 +8,8 @@
  */
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using BionicERP.Application.Crm.Customers.Models;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
 using BionicERP.Domain.CRM;
@@ -17,9 +19,16 @@ using Microsoft.EntityFrameworkCore;
 namespace BionicERP.Application.Crm.Customers.Commands {
     public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand, Unit> {
         private readonly IBionicERPDatabaseService _database;
+        private readonly IMapper _Mapper;
 
         public UpdateCustomerCommandHandler (IBionicERPDatabaseService database) {
             _database = database;
+            _Mapper = new MapperConfiguration (x => {
+                x.CreateMap<UpdateCustomerCommand, Customer> ();
+                x.CreateMap<CustomerSocialMediaModel, SocialMedia> ();
+                x.CreateMap<CustomerAddressModel, Address> ();
+                x.CreateMap<CustomerPhoneNumberModel, PhoneNumber> ();
+            }).CreateMapper ();
         }
 
         public async Task<Unit> Handle (UpdateCustomerCommand request, CancellationToken cancellationToken) {
@@ -31,6 +40,7 @@ namespace BionicERP.Application.Crm.Customers.Commands {
             if (customer == null) {
                 throw new NotFoundException ("Customer", request.Id);
             }
+            _Mapper.Map (request, customer);
 
             _database.Customer.Update (customer);
             await _database.SaveAsync ();
