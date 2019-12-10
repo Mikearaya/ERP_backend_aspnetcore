@@ -21,13 +21,13 @@ namespace BionicERP.Application.Inventory.StockBatchs.Commands {
         }
 
         public async Task<Unit> Handle (DeleteStockBatchCommand request, CancellationToken cancellationToken) {
-            var batch = await _database.StockBatch.FindAsync (request.Id);
+            var batch = await _database.StockBatchStorage.FindAsync (request.Id);
 
             if (batch == null) {
                 throw new NotFoundException ("Batch", request.Id);
             }
 
-            _database.StockBatch.Remove (batch);
+            _database.StockBatchStorage.Remove (batch);
             await _database.SaveAsync ();
 
             return Unit.Value;

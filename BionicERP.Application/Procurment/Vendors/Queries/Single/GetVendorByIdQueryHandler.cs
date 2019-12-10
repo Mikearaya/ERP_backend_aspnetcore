@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 10, 2019 4:12 PM
+ * @Last Modified Time: Dec 10, 2019 6:07 PM
  * @Description: Modify Here, Please 
  */
 using System.Linq;
@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using BionicERP.Application.Exceptions;
 using BionicERP.Application.Interfaces;
-using BionicERP.Application.Procurment.Vendors.Models;
 using BionicERP.Domain.Procurment;
 using BionicInventory.Application.Procurment.Vendors.Models;
 using MediatR;
