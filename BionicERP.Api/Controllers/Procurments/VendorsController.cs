@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 2:32 PM
+ * @Last Modified Time: Dec 10, 2019 4:00 PM
  * @Description: Modify Here, Please 
  */
 
@@ -40,6 +40,14 @@ namespace BionicInventory.API.Controllers.Procurments.Vendors {
         public async Task<ActionResult<VendorView>> FindVendorById (uint id) {
 
             var vendor = await _Mediator.Send (new GetVendorByIdQuery () { Id = id });
+            return StatusCode (200, vendor);
+        }
+
+        // api/procurments/vendors/2
+        [HttpGet ("{id}/purchase-terms")]
+        public async Task<ActionResult<VendorView>> GetVendorPurchaseTerm (uint id) {
+
+            var vendor = await _Mediator.Send (new GetVendorPurchaseTermQuery () { VendorId = id });
             return StatusCode (200, vendor);
         }
 

@@ -3,9 +3,10 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 5, 2019 2:26 PM
+ * @Last Modified Time: Dec 10, 2019 4:11 PM
  * @Description: Modify Here, Please 
  */
+using BionicERP.Application.Procurment.Vendors.Models;
 using BionicInventory.Application.Procurment.Vendors.Models;
 using MediatR;
 
