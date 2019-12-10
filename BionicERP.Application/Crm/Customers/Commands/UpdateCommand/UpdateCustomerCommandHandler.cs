@@ -35,6 +35,7 @@ namespace BionicERP.Application.Crm.Customers.Commands {
             Customer customer = await _database.Customer.Include (x => x.PhoneNumber)
                 .Include (x => x.SocialMedia)
                 .Include (x => x.Address)
+                .AsNoTracking ()
                 .FirstOrDefaultAsync (x => x.Id == request.Id);
 
             if (customer == null) {
