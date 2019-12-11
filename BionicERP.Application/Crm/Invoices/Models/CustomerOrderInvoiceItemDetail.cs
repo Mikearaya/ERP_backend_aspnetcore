@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 11, 2019 1:39 PM
+ * @Last Modified Time: Dec 11, 2019 2:14 PM
  * @Description: Modify Here, Please  
  */
 using System;
@@ -14,7 +14,7 @@ namespace BionicERP.Application.Crm.Invoices.Models {
     public class CustomerOrderInvoiceItemDetail {
 
         public uint Id { get; set; }
-        public DateTime? DateAddded { get; set; }
+        public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
 
         public float? Discount { get; set; }
@@ -42,7 +42,9 @@ namespace BionicERP.Application.Crm.Invoices.Models {
                     Quantity = detail.Quantity,
                     Note = detail.Note,
                     UnitPrice = detail.UnitPrice,
-                    Tax = detail.Tax
+                    Tax = detail.Tax,
+                    DateAdded = detail.DateAddded,
+                    DateUpdated = detail.DateUpdated
                 };
             }
         }
