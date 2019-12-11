@@ -30,7 +30,7 @@ namespace BionicERP.Application.Procurment.PurchaseOrders.Models {
             get {
                 return po => new PurchaseOrderIndexModel () {
                     Id = po.Id,
-                    Vendor = po.Vendor.Name,
+                    Vendor = $"PO-{po.Id}  {po.Vendor.Name}",
                     PaidAmount = (decimal) po.InvoicePayments.Sum (p => (decimal) p.Amount),
                     TotalAmount = (decimal?) po.StockBatch.Sum (p => (double) p.UnitCost * (double) p.Quantity)
 

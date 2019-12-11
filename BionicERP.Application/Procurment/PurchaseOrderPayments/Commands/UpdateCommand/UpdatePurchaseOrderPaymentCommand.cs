@@ -12,9 +12,9 @@ using MediatR;
 namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Commands {
     public class UpdatePurchaseOrderPaymentCommand : IRequest {
         public uint Id { get; set; }
-        public double Amount { get; set; }
+        public float Amount { get; set; }
         public uint? PurchaseOrderId { get; set; }
-        public int? CheckNo { get; set; }
+        public string CheckNo { get; set; }
         public DateTime Date { get; set; }
         public string Note { get; set; }
     }

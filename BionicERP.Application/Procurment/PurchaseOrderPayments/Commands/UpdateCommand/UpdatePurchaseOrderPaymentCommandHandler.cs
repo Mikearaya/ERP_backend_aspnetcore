@@ -22,7 +22,9 @@ namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Commands {
             _database = database;
             _Mappper = new MapperConfiguration (x => {
                 x.CreateMap<UpdatePurchaseOrderPaymentCommand, InvoicePayments> ();
-            }).CreateMapper ();
+
+            }).
+            CreateMapper ();
         }
 
         public async Task<Unit> Handle (UpdatePurchaseOrderPaymentCommand request, CancellationToken cancellationToken) {
@@ -32,7 +34,7 @@ namespace BionicERP.Application.Procurment.PurchaseOrderPayments.Commands {
                 throw new NotFoundException ("Payment", request.Id);
             }
 
-            _Mappper.Map (payment, request);
+            _Mappper.Map (request, payment);
             _database.InvoicePayments.Update (payment);
             await _database.SaveAsync ();
             return Unit.Value;

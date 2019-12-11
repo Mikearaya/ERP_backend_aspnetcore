@@ -7,8 +7,6 @@
  * @Description: Modify Here, Please 
  */
 using System;
-using System.Collections.Generic;
-using BionicERP.Domain;
 using BionicERP.Domain.Procurment;
 
 namespace BionicERP.Domain.CRM {
