@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 11, 2019 2:04 PM
+ * @Last Modified Time: Dec 11, 2019 3:06 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -40,13 +40,29 @@ namespace BionicERP.Api.Controllers.Crm {
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerOrderInvoiceDetail>> CreateInvoice ([FromBody] CreateCustomerOrderInvoiceCommand newCustomer) {
+        public async Task<ActionResult<CustomerOrderInvoiceDetail>> CreateInvoice ([FromBody] CreateCustomerOrderInvoiceCommand newInvoice) {
 
-            var result = await _Mediator.Send (newCustomer);
+            var result = await _Mediator.Send (newInvoice);
             var invoice = await _Mediator.Send (new GetCustomerOrderInvoiceById () { Id = result });
 
             return StatusCode (201, invoice);
 
         }
+
+        [HttpPut ("{id}")]
+        public async Task<ActionResult<CustomerOrderInvoiceDetail>> UpdateCustomerInvoice (uint id, [FromBody] UpdateCustomerInvoiceCommand updatedInvoice) {
+
+            var result = await _Mediator.Send (updatedInvoice);
+
+            return StatusCode (204);
+
+        }
+
+        [HttpDelete ("{id}")]
+        public async Task<ActionResult> DeleteCustomerInvoice (uint id) {
+            await _Mediator.Send (new DeleteCustomerInvoiceCommand () { Id = id });
+            return StatusCode (204);
+        }
+
     }
 }
