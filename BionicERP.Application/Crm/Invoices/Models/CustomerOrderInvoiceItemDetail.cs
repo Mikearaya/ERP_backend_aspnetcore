@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 11, 2019 2:14 PM
+ * @Last Modified Time: Dec 11, 2019 3:27 PM
  * @Description: Modify Here, Please  
  */
 using System;
@@ -26,9 +26,6 @@ namespace BionicERP.Application.Crm.Invoices.Models {
         public string Note { get; set; }
         public float UnitPrice { get; set; }
         public float? Tax { get; set; }
-
-        public Invoice InvoiceNoNavigation { get; set; }
-        public CustomerOrderItem CustomerOrderItem { get; set; }
 
         public static Expression<Func<InvoiceDetail, CustomerOrderInvoiceItemDetail>> Projection {
             get {

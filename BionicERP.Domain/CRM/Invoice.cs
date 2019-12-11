@@ -8,7 +8,6 @@
  */
 using System;
 using System.Collections.Generic;
-using BionicERP.Domain;
 
 namespace BionicERP.Domain.CRM {
     public class Invoice {
