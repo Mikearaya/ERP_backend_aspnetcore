@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 2:08 PM
+ * @Last Modified Time: Dec 12, 2019 2:16 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -39,7 +39,8 @@ namespace BionicERP.Api.Controllers.Crm {
         [HttpPost]
         public async Task<ActionResult<InvoicePaymentListView>> CreateInvoicePayment ([FromBody] CreateCustomerInvoicePaymentCommand command) {
             var result = await _Mediator.Send (command);
-            return StatusCode (201);
+            var payment = await _Mediator.Send (new GetCustomerInvoicePaymentById () { Id = result });
+            return StatusCode (201, payment);
         }
 
         [HttpPut ("{id}")]
@@ -52,6 +53,13 @@ namespace BionicERP.Api.Controllers.Crm {
         public async Task<ActionResult<FilterResultModel<InvoicePaymentListView>>> GetInvoicePaymentsList ([FromBody] GetInvoicePaymentListQuery query) {
             var result = await _Mediator.Send (query);
             return StatusCode (200, result);
+
+        }
+
+        [HttpDelete ("{id}")]
+        public async Task<ActionResult> DeleteCustomerInvoicePayment (uint id) {
+            await _Mediator.Send (new DeleteCustomerInvoicePaymentCommand () { Id = id });
+            return StatusCode (204);
 
         }
     }
