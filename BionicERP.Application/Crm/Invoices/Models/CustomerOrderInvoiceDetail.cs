@@ -44,6 +44,7 @@ namespace BionicERP.Application.Crm.Invoices.Models {
                     InvoiceType = invoice.InvoiceType,
                     PaymentMethod = invoice.PaymentMethod,
                     Tax = invoice.Tax,
+                    Note = invoice.Note,
                     Discount = invoice.Discount,
                     DateAdded = invoice.DateAdded,
                     DateUpdated = invoice.DateUpdated,

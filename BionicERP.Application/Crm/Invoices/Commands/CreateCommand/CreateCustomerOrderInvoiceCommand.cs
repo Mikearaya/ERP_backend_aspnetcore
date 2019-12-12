@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BionicERP.Application.Crm.Invoices.Models;
 /*
@@ -20,6 +21,7 @@ namespace BionicERP.Application.Crm.Invoices.Commands {
 
         public uint PreparedBy { get; set; }
         public string InvoiceType { get; set; }
+        public DateTime DueDate { get; set; }
 
         public string PaymentMethod { get; set; }
         public float Tax { get; set; }

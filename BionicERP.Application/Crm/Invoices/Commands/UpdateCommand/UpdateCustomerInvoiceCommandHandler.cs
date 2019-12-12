@@ -1,3 +1,4 @@
+using System;
 /*
  * @CreateTime: Dec 11, 2019 2:48 PM 
  * @Author:  Mikael Araya 
@@ -33,6 +34,7 @@ namespace BionicERP.Application.Crm.Invoices.Commands {
             Invoice invoice = await _database.Invoice
                 .Where (i => i.Id == request.Id)
                 .Include (d => d.InvoiceDetail)
+                .AsNoTracking ()
                 .FirstOrDefaultAsync ();
 
             if (invoice == null) {
@@ -45,6 +47,8 @@ namespace BionicERP.Application.Crm.Invoices.Commands {
                     _database.InvoiceDetail.Remove (item);
                     continue;
                 }
+
+                item.DateUpdated = DateTime.Now;
 
             }
 

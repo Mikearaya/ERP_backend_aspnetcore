@@ -11,7 +11,7 @@ using System;
 namespace BionicERP.Application.Crm.Invoices.Models {
     public class CustomerOrderInvoiceItemModel {
 
-        public uint? Id { get; set; }
+        public uint Id { get; set; }
 
         public float? Discount { get; set; }
         public uint SalesOrderId { get; set; }
