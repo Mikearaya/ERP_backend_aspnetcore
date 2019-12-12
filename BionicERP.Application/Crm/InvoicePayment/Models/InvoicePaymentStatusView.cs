@@ -7,10 +7,10 @@ using BionicERP.Domain.CRM;
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 11:43 AM
+ * @Last Modified Time: Dec 12, 2019 11:48 AM
  * @Description: Modify Here, Please  
  */
-namespace BionicERP.Application.Crm.InvoicePayments.Models {
+namespace BionicERP.Application.Crm.InvoicePayment.Models {
     public class InvoicePaymentStatusView {
         public uint InvoiceId { get; set; }
         public float? PaidAmount { get; set; } = 0;
