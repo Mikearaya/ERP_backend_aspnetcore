@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 11, 2019 4:10 PM
+ * @Last Modified Time: Dec 12, 2019 4:15 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -32,6 +32,15 @@ namespace BionicERP.Api.Controllers.Crm {
 
         [HttpPost ("filter")]
         public async Task<ActionResult<FilterResultModel<CustomerOrderInvoiceList>>> GetAllCustomerOrderInvoicess ([FromBody] GetCustomerOrderInvoiceListQuery query) {
+
+            var CustomerOrders = await _Mediator.Send (query);
+
+            return StatusCode (200, CustomerOrders);
+
+        }
+
+        [HttpGet ("index")]
+        public async Task<ActionResult<FilterResultModel<CustomerOrderInvoiceList>>> GetCustomerInvoiceIndex ([FromQuery] GetCustomerInvoiceListQuery query) {
 
             var CustomerOrders = await _Mediator.Send (query);
 

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 2:16 PM
+ * @Last Modified Time: Dec 12, 2019 3:15 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BionicERP.Api.Controllers.Crm {
 
-    [Route ("api/invoice-payments")]
+    [Route ("api/crm/invoice-payments")]
     public class InvoicePaymentController : Controller {
         private readonly IMediator _Mediator;
 

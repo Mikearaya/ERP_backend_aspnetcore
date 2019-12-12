@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 1:25 PM
+ * @Last Modified Time: Dec 12, 2019 4:03 PM
  * @Description: Modify Here, Please  
  */
 using System;
@@ -17,7 +17,7 @@ namespace BionicERP.Application.Crm.InvoicePayment.Models {
         public uint? InvoiceNo { get; set; }
         public string CustomerName { get; set; }
         public float Amount { get; set; }
-        public uint? PurchaseOrderId { get; set; }
+
         public string CheckNo { get; set; }
         public DateTime Date { get; set; }
         public string Note { get; set; }
@@ -30,7 +30,6 @@ namespace BionicERP.Application.Crm.InvoicePayment.Models {
                     InvoiceNo = payment.InvoiceNo,
                     Amount = payment.Amount,
                     CustomerName = payment.InvoiceNoNavigation.CustomerOrder.Client.FullName,
-                    PurchaseOrderId = payment.PurchaseOrderId,
                     CheckNo = payment.CheckNo,
                     Date = payment.Date,
                     Note = payment.Note,

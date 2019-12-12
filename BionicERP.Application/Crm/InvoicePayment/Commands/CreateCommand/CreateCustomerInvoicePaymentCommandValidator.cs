@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 1:38 PM
+ * @Last Modified Time: Dec 12, 2019 2:23 PM
  * @Description: Modify Here, Please  
  */
 using FluentValidation;
