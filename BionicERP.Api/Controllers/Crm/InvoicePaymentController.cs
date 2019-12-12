@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya 
  * @Contact: MikaelAraya12@gmail.com 
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Dec 12, 2019 1:46 PM
+ * @Last Modified Time: Dec 12, 2019 1:55 PM
  * @Description: Modify Here, Please  
  */
 using System.Threading.Tasks;
@@ -28,6 +28,12 @@ namespace BionicERP.Api.Controllers.Crm {
         public async Task<ActionResult<InvoicePaymentStatusView>> GetInvoicePaymentStatus (uint id) {
             var payment = await _Mediator.Send (new GetInvoicePaymentStatusQuery () { Id = id });
             return StatusCode (200, payment);
+        }
+
+        [HttpGet ("{id}")]
+        public async Task<ActionResult<InvoicePaymentListView>> GetCustomerInvoicePaymentById (uint id) {
+            var result = await _Mediator.Send (new GetCustomerInvoicePaymentById () { Id = id });
+            return StatusCode (200, result);
         }
 
         [HttpPost]
